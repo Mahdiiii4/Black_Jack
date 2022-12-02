@@ -5,12 +5,12 @@ namespace Black_Jack
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("1. Spela");
+            Console.WriteLine("1. Spela 21:n");
             Console.WriteLine("2. vissa namn på sista vinnaren");
             Console.WriteLine("3. regler");
             Console.WriteLine("4. avsluta");
             int svar = int.Parse(Console.ReadLine());
-            string namn = "";
+            string namn = "N/A";
             while (svar != 4)
             {
                 switch (svar)
@@ -27,8 +27,8 @@ namespace Black_Jack
                             int userSumma = userCard + userCardTwo;
 
                             //visa user resultatet
-                            Console.WriteLine("Du fick: "+userCard+", "+userCardTwo+ ".");
-                            Console.WriteLine("Summa till denna kort är: "+userSumma+".");
+                            Console.WriteLine("Du fick: " + userCard + ", " + userCardTwo + ".");
+                            Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
 
                             //random och räkna ut (dator)
                             int datorCard = dator.Next(1, 11);
@@ -42,7 +42,7 @@ namespace Black_Jack
                             Console.WriteLine();
                             Console.WriteLine("Vill du dra ett kort? (j/n)");
                             string jaNej = Console.ReadLine();
-                            while(userSumma <= 21 && datorSumma <= 21)
+                            while (userSumma <= 21 && datorSumma <= 21)
                             {
                                 if (jaNej == "j")
                                 {
@@ -246,17 +246,23 @@ namespace Black_Jack
 
                     case 3:
                         {
-                            Console.WriteLine("Regler");
+                            Console.WriteLine("1. Du och datoren kommer och får först 2 kort pars och sen 1 kort om man vill.");
+                            Console.WriteLine("2. Du måste försoka och nå 21 för att vinna men om du går över 21 du förlårar. Gillar till datoren också.");
+                            Console.WriteLine("3. Om datoren har mindre kort an dig den kommer och dra automatiskt.");
+                            Console.WriteLine("4. När den har mer eller lika mycket som dig den kommer inte och dra");
                             break;
                         }
                 }
                 Console.WriteLine();
-                Console.WriteLine("1. Spela");
+                Console.WriteLine("1. Spela 21:n");
                 Console.WriteLine("2. vissa namn på sista vinnaren");
                 Console.WriteLine("3. regler");
                 Console.WriteLine("4. avsluta");
+                Console.WriteLine();
                 svar = int.Parse(Console.ReadLine());
+                Console.WriteLine();
             }
+            Console.WriteLine("Programmet avslutas");
         }
     }
 }
