@@ -145,6 +145,7 @@ namespace Black_Jack
                 svar = int.Parse(Console.ReadLine());
                 Console.WriteLine();
             }
+            Console.WriteLine("Programmet avslutas");
         }
     }
 }
