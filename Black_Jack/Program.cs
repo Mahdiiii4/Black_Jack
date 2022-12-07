@@ -5,6 +5,7 @@ namespace Black_Jack
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Välj nummer mellan 1 och 4.");
             Console.WriteLine("1. Spela 21:n");
             Console.WriteLine("2. vissa namn på sista vinnaren");
             Console.WriteLine("3. regler");
@@ -42,7 +43,7 @@ namespace Black_Jack
                             Console.WriteLine();
                             Console.WriteLine("Vill du dra ett kort? (j/n)");
                             string jaNej = Console.ReadLine();
-
+                            Console.WriteLine();
                             //loop
                             while (userSumma <= 21 && datorSumma <= 21)
                             {
@@ -70,9 +71,10 @@ namespace Black_Jack
                                     }
                                     else
                                     {
-                                        Console.WriteLine();
+                                        Console.WriteLine("Datorens summa är: " + datorSumma + ".");
                                         Console.WriteLine("Vill dra ett mer kort? (j/n)");
                                         jaNej = Console.ReadLine();
+                                        Console.WriteLine();
                                     }
                                 }
                                 //Dra inte kort, dra kort for dator om < user och checka vinna, förlora villkor.
@@ -80,13 +82,11 @@ namespace Black_Jack
                                 {
                                     Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
                                     Console.WriteLine();
-                                    if (datorSumma < userSumma)
-                                    {
-                                        Console.WriteLine("Datoren kommer och dra kort tills den är lika eller store än den summa");
-                                        Console.WriteLine();
 
                                         while (datorSumma < userSumma)
                                         {
+                                            Console.WriteLine("Datoren kommer och dra kort tills den är lika eller store än den summa");
+                                            Console.WriteLine();
                                             datorCard = dator.Next(1, 11);
                                             Console.WriteLine("Datoren fick: " + datorCard + ".");
                                             datorSumma = datorSumma + datorCard;
@@ -109,15 +109,15 @@ namespace Black_Jack
                                         }
                                         else
                                         {
-                                            Console.WriteLine();
+                                            Console.WriteLine("Datorens summa är: " +datorSumma+ ".");
                                             Console.WriteLine("Vill dra ett mer kort? (j/n)");
                                             jaNej = Console.ReadLine();
+                                            Console.WriteLine();
                                         }
-                                    }
                                 }
                             }
                             break;
-                        }       
+                        }
                     case 2:
                         {
                             Console.WriteLine("Sista vinnaren är: " + namn + ".");
@@ -126,6 +126,7 @@ namespace Black_Jack
 
                     case 3:
                         {
+                            Console.WriteLine("Regler:");
                             Console.WriteLine("1. mål är att tvinga datorn att få mer än 21 poäng.");
                             Console.WriteLine("2. Du får poäng genom att dra kort, varje kort har 1 - 10 poäng.");
                             Console.WriteLine("3. Om du får mer än 21 poäng har du förlorat.");
@@ -137,6 +138,7 @@ namespace Black_Jack
                 }
                 //när loop är av --> för att välja igen.
                 Console.WriteLine();
+                Console.WriteLine("Välj nummer mellan 1 och 4.");
                 Console.WriteLine("1. Spela 21:n");
                 Console.WriteLine("2. vissa namn på sista vinnaren");
                 Console.WriteLine("3. regler");
@@ -145,7 +147,7 @@ namespace Black_Jack
                 svar = int.Parse(Console.ReadLine());
                 Console.WriteLine();
             }
-            Console.WriteLine("Programmet avslutas");
+            Console.WriteLine("Programmet avslutades");
         }
     }
 }
