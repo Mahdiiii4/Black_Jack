@@ -6,13 +6,17 @@ namespace Black_Jack
         static void Main(string[] args)
         {   //färg
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Clear();
             //Program start
             Console.WriteLine("Välj nummer mellan 1 och 4.");
+            Thread.Sleep(1000);
             Console.WriteLine("1. Spela 21:n");
+            Thread.Sleep(500);
             Console.WriteLine("2. vissa namn på sista vinnaren");
+            Thread.Sleep(500);
             Console.WriteLine("3. regler");
+            Thread.Sleep(500);
             Console.WriteLine("4. avsluta");
             int svar = int.Parse(Console.ReadLine());
             string namn = "Ingen har vunnit än";
@@ -33,7 +37,7 @@ namespace Black_Jack
                             int loseCard = int.Parse(Console.ReadLine());
 
                             Console.WriteLine("Du och datoren kommer och får 2 kort pars");
-
+                            Thread.Sleep(1000);
                             //random och räkna ut (user)
                             Random user = new Random();
                             int userCard = user.Next(minCard, maxCard);
@@ -42,8 +46,9 @@ namespace Black_Jack
 
                             //visa user resultatet
                             Console.WriteLine("Du fick: " + userCard + ", " + userCardTwo + ".");
+                            Thread.Sleep(1000);
                             Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
-
+                            Thread.Sleep(2000);
                             //random och räkna ut (dator)
                             Random dator = new Random();
                             int datorCard = dator.Next(minCard, maxCard);
@@ -53,7 +58,9 @@ namespace Black_Jack
 
                             //visa dator resultatet till user och fråga
                             Console.WriteLine("Dator fick: " + datorCard + ", " + datorCardTwo + ".");
+                            Thread.Sleep(1000);
                             Console.WriteLine("Summa till datoren kort är: " + datorSumma + ".");
+                            Thread.Sleep(1000);
                             Console.WriteLine();
 
                             //variabl för fråga
@@ -69,6 +76,7 @@ namespace Black_Jack
                             {
                                 Console.WriteLine("Du vann!");
                                 Console.WriteLine();
+                                Thread.Sleep(2000);
                                 Console.WriteLine("skriv det namn ner");
                                 namn = Console.ReadLine();
                                 break;
@@ -79,6 +87,7 @@ namespace Black_Jack
                             {
                                 Console.WriteLine("Du vann!");
                                 Console.WriteLine();
+                                Thread.Sleep(2000);
                                 Console.WriteLine("skriv det namn ner");
                                 namn = Console.ReadLine();
                                 break;
@@ -104,7 +113,9 @@ namespace Black_Jack
                                     userCard = user.Next(minCard, maxCard);
                                     userSumma = userCard + userSumma;
                                     Console.WriteLine("Du fick: " + userCard + ".");
+                                    Thread.Sleep(1000);
                                     Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
+                                    Thread.Sleep(1000);
                                     Console.WriteLine();
 
                                     if (userSumma > loseCard)
@@ -116,6 +127,7 @@ namespace Black_Jack
                                     {
                                         Console.WriteLine("Du vann!");
                                         Console.WriteLine();
+                                        Thread.Sleep(2000);
                                         Console.WriteLine("skriv det namn ner");
                                         namn = Console.ReadLine();
                                         break;
@@ -133,22 +145,27 @@ namespace Black_Jack
                                 {
                                     Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
                                     Console.WriteLine();
-
+                                    Thread.Sleep(2000);
                                     while (datorSumma < userSumma)
                                     {
                                         Console.WriteLine("Datoren kommer och dra kort tills den är lika eller store än den summa");
+                                        Thread.Sleep(1000);
                                         Console.WriteLine();
                                         datorCard = dator.Next(minCard, maxCard);
                                         Console.WriteLine("Datoren fick: " + datorCard + ".");
+                                        Thread.Sleep(1000);
                                         datorSumma = datorSumma + datorCard;
                                         Console.WriteLine("Dator summa är: " + datorSumma + ".");
+                                        Thread.Sleep(1000);
                                         Console.WriteLine();
+                                        Thread.Sleep(2000);
                                     }
 
                                     if (datorSumma > loseCard)
                                     {
                                         Console.WriteLine("Du vann!");
                                         Console.WriteLine();
+                                        Thread.Sleep(2000);
                                         Console.WriteLine("skriv det namn ner");
                                         namn = Console.ReadLine();
                                         break;
@@ -161,6 +178,7 @@ namespace Black_Jack
                                     else
                                     {
                                         Console.WriteLine("Datorens summa är: " + datorSumma + ".");
+                                        Thread.Sleep(1000);
                                         Console.WriteLine("Vill dra ett mer kort? (j/n)");
                                         jaNej = Console.ReadLine();
                                         Console.WriteLine();
@@ -178,21 +196,32 @@ namespace Black_Jack
                     case 3:
                         {
                             Console.WriteLine("Regler:");
+                            Thread.Sleep(1000);
                             Console.WriteLine("1. mål är att tvinga datorn att få mer än 21 poäng.");
+                            Thread.Sleep(500);
                             Console.WriteLine("2. Du får poäng genom att dra kort, varje kort har 1 - 10 poäng.");
+                            Thread.Sleep(500);
                             Console.WriteLine("3. Om du får mer än 21 poäng har du förlorat.");
+                            Thread.Sleep(500);
                             Console.WriteLine("4. Både du och datorn får två kort i början.");
+                            Thread.Sleep(500);
                             Console.WriteLine("5. Därefter får du fler kort tills du är nöjd eller får över 21.");
+                            Thread.Sleep(500);
                             Console.WriteLine("6. När du är färdig drar datorn kort till den har mer poäng än dig eller över 21 poäng.");
                             break;
                         }
                 }
                 //när loop är av --> för att välja igen.
+                Thread.Sleep(1000);
                 Console.WriteLine();
                 Console.WriteLine("Välj nummer mellan 1 och 4.");
+                Thread.Sleep(1000);
                 Console.WriteLine("1. Spela 21:n");
+                Thread.Sleep(500);
                 Console.WriteLine("2. vissa namn på sista vinnaren");
+                Thread.Sleep(500);
                 Console.WriteLine("3. regler");
+                Thread.Sleep(500);
                 Console.WriteLine("4. avsluta");
                 Console.WriteLine();
                 svar = int.Parse(Console.ReadLine());
