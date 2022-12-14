@@ -4,7 +4,11 @@ namespace Black_Jack
     class Program
     {
         static void Main(string[] args)
-        {
+        {   //färg
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            //Program start
             Console.WriteLine("Välj nummer mellan 1 och 4.");
             Console.WriteLine("1. Spela 21:n");
             Console.WriteLine("2. vissa namn på sista vinnaren");
@@ -18,12 +22,22 @@ namespace Black_Jack
                 {
                     case 1:
                         {
+                            //Styr max kort dras till dig och datoren
+                            Console.WriteLine("Välj max kort som drar till dig och datoren.");
+                            int maxCard = int.Parse(Console.ReadLine());
+                            //Styr minst kort dras till dig och datoren
+                            Console.WriteLine("Välj minst kort som drar till dig och datoren.");
+                            int minCard = int.Parse(Console.ReadLine());
+                            //Styr 21
+                            Console.WriteLine("Välj ett nummer som man går över man förlårar (istält för 21 som är standard)");
+                            int loseCard = int.Parse(Console.ReadLine());
+
                             Console.WriteLine("Du och datoren kommer och får 2 kort pars");
 
                             //random och räkna ut (user)
                             Random user = new Random();
-                            int userCard = user.Next(1, 11);
-                            int userCardTwo = user.Next(1, 11);
+                            int userCard = user.Next(minCard, maxCard);
+                            int userCardTwo = user.Next(minCard, maxCard);
                             int userSumma = userCard + userCardTwo;
 
                             //visa user resultatet
@@ -32,8 +46,8 @@ namespace Black_Jack
 
                             //random och räkna ut (dator)
                             Random dator = new Random();
-                            int datorCard = dator.Next(1, 11);
-                            int datorCardTwo = dator.Next(1, 11);
+                            int datorCard = dator.Next(minCard, maxCard);
+                            int datorCardTwo = dator.Next(minCard, maxCard);
                             int datorSumma = datorCard + datorCardTwo;
 
 
@@ -41,27 +55,64 @@ namespace Black_Jack
                             Console.WriteLine("Dator fick: " + datorCard + ", " + datorCardTwo + ".");
                             Console.WriteLine("Summa till datoren kort är: " + datorSumma + ".");
                             Console.WriteLine();
-                            Console.WriteLine("Vill du dra ett kort? (j/n)");
-                            string jaNej = Console.ReadLine();
-                            Console.WriteLine();
+
+                            //variabl för fråga
+                            string jaNej;
+
+                            //check condation för user
+                            if (userSumma > loseCard)
+                            {
+                                Console.WriteLine("Du förlårade");
+                                break;
+                            }
+                            else if (userSumma == loseCard)
+                            {
+                                Console.WriteLine("Du vann!");
+                                Console.WriteLine();
+                                Console.WriteLine("skriv det namn ner");
+                                namn = Console.ReadLine();
+                                break;
+                            }
+
+                            //check condation för dator
+                            if (datorSumma > loseCard)
+                            {
+                                Console.WriteLine("Du vann!");
+                                Console.WriteLine();
+                                Console.WriteLine("skriv det namn ner");
+                                namn = Console.ReadLine();
+                                break;
+                            }
+                            else if (datorSumma == loseCard)
+                            {
+                                Console.WriteLine("Du förlårade");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vill du dra ett kort? (j/n)");
+                                jaNej = Console.ReadLine();
+                                Console.WriteLine();
+                            }
+
                             //loop
-                            while (userSumma <= 21 && datorSumma <= 21)
+                            while (userSumma <= loseCard && datorSumma <= loseCard)
                             {
                                 //om ja dra kort och checka vinna, förlora villkor.
                                 if (jaNej == "j")
                                 {
-                                    userCard = user.Next(1, 11);
+                                    userCard = user.Next(minCard, maxCard);
                                     userSumma = userCard + userSumma;
                                     Console.WriteLine("Du fick: " + userCard + ".");
                                     Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
                                     Console.WriteLine();
 
-                                    if (userSumma > 21)
+                                    if (userSumma > loseCard)
                                     {
                                         Console.WriteLine("Du förlårade");
                                         break;
                                     }
-                                    else if (userSumma == 21)
+                                    else if (userSumma == loseCard)
                                     {
                                         Console.WriteLine("Du vann!");
                                         Console.WriteLine();
@@ -83,37 +134,37 @@ namespace Black_Jack
                                     Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
                                     Console.WriteLine();
 
-                                        while (datorSumma < userSumma)
-                                        {
-                                            Console.WriteLine("Datoren kommer och dra kort tills den är lika eller store än den summa");
-                                            Console.WriteLine();
-                                            datorCard = dator.Next(1, 11);
-                                            Console.WriteLine("Datoren fick: " + datorCard + ".");
-                                            datorSumma = datorSumma + datorCard;
-                                            Console.WriteLine("Dator summa är: " + datorSumma + ".");
-                                            Console.WriteLine();
-                                        }
+                                    while (datorSumma < userSumma)
+                                    {
+                                        Console.WriteLine("Datoren kommer och dra kort tills den är lika eller store än den summa");
+                                        Console.WriteLine();
+                                        datorCard = dator.Next(minCard, maxCard);
+                                        Console.WriteLine("Datoren fick: " + datorCard + ".");
+                                        datorSumma = datorSumma + datorCard;
+                                        Console.WriteLine("Dator summa är: " + datorSumma + ".");
+                                        Console.WriteLine();
+                                    }
 
-                                        if (datorSumma > 21)
-                                        {
-                                            Console.WriteLine("Du vann!");
-                                            Console.WriteLine();
-                                            Console.WriteLine("skriv det namn ner");
-                                            namn = Console.ReadLine();
-                                            break;
-                                        }
-                                        else if (datorSumma == 21)
-                                        {
-                                            Console.WriteLine("Du förlårade");
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Datorens summa är: " +datorSumma+ ".");
-                                            Console.WriteLine("Vill dra ett mer kort? (j/n)");
-                                            jaNej = Console.ReadLine();
-                                            Console.WriteLine();
-                                        }
+                                    if (datorSumma > loseCard)
+                                    {
+                                        Console.WriteLine("Du vann!");
+                                        Console.WriteLine();
+                                        Console.WriteLine("skriv det namn ner");
+                                        namn = Console.ReadLine();
+                                        break;
+                                    }
+                                    else if (datorSumma == loseCard)
+                                    {
+                                        Console.WriteLine("Du förlårade");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Datorens summa är: " + datorSumma + ".");
+                                        Console.WriteLine("Vill dra ett mer kort? (j/n)");
+                                        jaNej = Console.ReadLine();
+                                        Console.WriteLine();
+                                    }
                                 }
                             }
                             break;
