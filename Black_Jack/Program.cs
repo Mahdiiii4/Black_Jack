@@ -5,8 +5,8 @@ namespace Black_Jack
     {
         static void Main(string[] args)
         {   //färg
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.Black;
+            var yellow = Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Clear();
             //Program start
             Console.WriteLine("Välj nummer mellan 1 och 4.");
@@ -45,21 +45,48 @@ namespace Black_Jack
                             int userSumma = userCard + userCardTwo;
 
                             //visa user resultatet
-                            Console.WriteLine("Du fick: " + userCard + ", " + userCardTwo + ".");
+                            //ändra färg
+                            Console.Write("Du fick: ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(+userCard + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write(",");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(+userCardTwo + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(".");
                             Thread.Sleep(1000);
-                            Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
+                            Console.Write("Summa till denna kort är: ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(+userSumma + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(".");
                             Thread.Sleep(2000);
+
                             //random och räkna ut (dator)
                             Random dator = new Random();
                             int datorCard = dator.Next(minCard, maxCard);
                             int datorCardTwo = dator.Next(minCard, maxCard);
                             int datorSumma = datorCard + datorCardTwo;
 
-
                             //visa dator resultatet till user och fråga
-                            Console.WriteLine("Dator fick: " + datorCard + ", " + datorCardTwo + ".");
+                            //ändra färg
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("Dator fick: ");
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(+datorCard + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write(", ");
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(+datorCardTwo + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(".");
                             Thread.Sleep(1000);
-                            Console.WriteLine("Summa till datoren kort är: " + datorSumma + ".");
+                            Console.Write("Summa till datoren kort är: ");
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(+datorSumma + "");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(".");
                             Thread.Sleep(1000);
                             Console.WriteLine();
 
@@ -69,12 +96,18 @@ namespace Black_Jack
                             //check condation för user
                             if (userSumma > loseCard)
                             {
-                                Console.WriteLine("Du förlårade");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write("Du");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("förlårade");
                                 break;
                             }
                             else if (userSumma == loseCard)
                             {
-                                Console.WriteLine("Du vann!");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Du");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("vann!");
                                 Console.WriteLine();
                                 Thread.Sleep(2000);
                                 Console.WriteLine("skriv det namn ner");
@@ -85,7 +118,10 @@ namespace Black_Jack
                             //check condation för dator
                             if (datorSumma > loseCard)
                             {
-                                Console.WriteLine("Du vann!");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine("Du");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("vann!");
                                 Console.WriteLine();
                                 Thread.Sleep(2000);
                                 Console.WriteLine("skriv det namn ner");
@@ -94,7 +130,10 @@ namespace Black_Jack
                             }
                             else if (datorSumma == loseCard)
                             {
-                                Console.WriteLine("Du förlårade");
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write("Du");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("förlårade");
                                 break;
                             }
                             else
@@ -112,20 +151,36 @@ namespace Black_Jack
                                 {
                                     userCard = user.Next(minCard, maxCard);
                                     userSumma = userCard + userSumma;
-                                    Console.WriteLine("Du fick: " + userCard + ".");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.Write("Du fick: ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(+userCard + "");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.WriteLine(".");
                                     Thread.Sleep(1000);
-                                    Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.Write("Summa till denna kort är: ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(+ userSumma + "");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.WriteLine(".");
                                     Thread.Sleep(1000);
                                     Console.WriteLine();
 
                                     if (userSumma > loseCard)
                                     {
-                                        Console.WriteLine("Du förlårade");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Du");
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("förlårade");
                                         break;
                                     }
                                     else if (userSumma == loseCard)
                                     {
-                                        Console.WriteLine("Du vann!");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine("Du");
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("vann!");
                                         Console.WriteLine();
                                         Thread.Sleep(2000);
                                         Console.WriteLine("skriv det namn ner");
@@ -134,7 +189,12 @@ namespace Black_Jack
                                     }
                                     else
                                     {
-                                        Console.WriteLine("Datorens summa är: " + datorSumma + ".");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Datorens summa är: ");
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                                        Console.Write(+ datorSumma + "");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine(".");
                                         Console.WriteLine("Vill dra ett mer kort? (j/n)");
                                         jaNej = Console.ReadLine();
                                         Console.WriteLine();
@@ -143,7 +203,12 @@ namespace Black_Jack
                                 //Dra inte kort, dra kort for dator om < user och checka vinna, förlora villkor.
                                 else if (jaNej == "n")
                                 {
-                                    Console.WriteLine("Summa till denna kort är: " + userSumma + ".");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.Write("Summa till denna kort är: ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write(+ userSumma + "");
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.WriteLine(".");
                                     Console.WriteLine();
                                     Thread.Sleep(2000);
                                     while (datorSumma < userSumma)
@@ -152,10 +217,20 @@ namespace Black_Jack
                                         Thread.Sleep(1000);
                                         Console.WriteLine();
                                         datorCard = dator.Next(minCard, maxCard);
-                                        Console.WriteLine("Datoren fick: " + datorCard + ".");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Datoren fick: ");
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                                        Console.Write(+ datorCard + "");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine(".");
                                         Thread.Sleep(1000);
                                         datorSumma = datorSumma + datorCard;
-                                        Console.WriteLine("Dator summa är: " + datorSumma + ".");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Dator summa är: ");
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                                        Console.Write(+ datorSumma + "");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine(".");
                                         Thread.Sleep(1000);
                                         Console.WriteLine();
                                         Thread.Sleep(2000);
@@ -163,7 +238,10 @@ namespace Black_Jack
 
                                     if (datorSumma > loseCard)
                                     {
-                                        Console.WriteLine("Du vann!");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine("Du");
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("vann!");
                                         Console.WriteLine();
                                         Thread.Sleep(2000);
                                         Console.WriteLine("skriv det namn ner");
@@ -172,12 +250,20 @@ namespace Black_Jack
                                     }
                                     else if (datorSumma == loseCard)
                                     {
-                                        Console.WriteLine("Du förlårade");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Du");
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.WriteLine("förlårade");
                                         break;
                                     }
                                     else
                                     {
-                                        Console.WriteLine("Datorens summa är: " + datorSumma + ".");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.Write("Datorens summa är: ");
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                                        Console.Write(+ datorSumma + "");
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                        Console.WriteLine(".");
                                         Thread.Sleep(1000);
                                         Console.WriteLine("Vill dra ett mer kort? (j/n)");
                                         jaNej = Console.ReadLine();
